@@ -1,0 +1,19 @@
+:root {
+  --color: #f2b806;
+  --basefont: lato, sans-serif;
+  --bold: lato-bold, sans-serif;
+  --light: lato-light, sans-serif;
+  /*---------------------------------------------
+   * Colors
+   *---------------------------------------------- */
+  /*Greyscale*/
+  --black: black;
+  --opaque: #111111;
+  --darker: #222222;
+  --dark: #313131;
+  --neutraler: #444444;
+  --neutral: #666666;
+  --pale: #999999;
+  --bare: #cccccc;
+  --whiter: #f3f3f3;
+}
