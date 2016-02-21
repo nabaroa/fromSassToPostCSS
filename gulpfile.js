@@ -1,11 +1,9 @@
 var gulp = require('gulp'),
     fs = require("fs"),
     postcss = require('gulp-postcss'),
-    atimport = require('postcss-import'),
-    autoprefixer = require('autoprefixer'),
     cssnext = require('postcss-cssnext'),
+    precss = require('precss'),
     notify = require('gulp-notify'),
-    nestedcss = require('postcss-nested'),
     plumber = require('gulp-plumber'),
     nano = require('gulp-cssnano'),
     browserSync = require('browser-sync'),
@@ -14,10 +12,8 @@ var gulp = require('gulp'),
 
 gulp.task('css', function() {
     var processors = [
-        atimport({ from: ['src/style.css'] }),
-        autoprefixer({ browsers: ['last 2 version'] }),
         cssnext,
-        nestedcss
+        precss
     ];
     return gulp.src('./src/*.css')
         .pipe(postcss(processors))
