@@ -1,6 +1,6 @@
 {
-    "name": "FromSassToPostCSS",
-    "version": "1.0.0",
+    "name": "fromsasstopostcss",
+    "version": "1.0.1",
     "description": "A gulpfile to take the plunge from Sass to PostCSS",
     "homepage": "",
     "author": {
@@ -12,20 +12,21 @@
         "type": "git",
         "url": "git://github.com/nabaroa/fromSassToPostCSS"
     },
+    "dependencies": {
+        "postcss": "^5.0.10"
+    },
     "devDependencies": {
+        "gulp": "^3.9.0",
+        "gulp-postcss": "6.1.0",
         "postcss-cssnext": "^2.4.0",
-        "postcss-import": "^8.0.2",
-        "postcss-nested": "^1.0.0",
-        "precss": "^1.0.0",
-        "autoprefixer": "^5.2.0",
-        "browserSync": "^0.0.1",
+        "precss": "^1.4.0",
+        "browser-sync": "",
         "cssnano": "^3.5.2",
         "fs": "0.0.2",
-        "gulp": "^3.9.0",
         "gulp-cssnano": "^2.1.1",
         "gulp-notify": "^2.2.0",
-        "gulp-plumber": "^1.1.0",
-        "gulp-postcss": "^5.1.10"
+        "gulp-plumber": "^1.1.0"
+        
     },
     "license": "MIT"
 }
