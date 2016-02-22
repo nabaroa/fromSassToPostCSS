@@ -1,5 +1,4 @@
 var gulp = require('gulp'),
-    fs = require("fs"),
     postcss = require('gulp-postcss'),
     cssnext = require('postcss-cssnext'),
     precss = require('precss'),
@@ -7,28 +6,33 @@ var gulp = require('gulp'),
     plumber = require('gulp-plumber'),
     nano = require('gulp-cssnano'),
     browserSync = require('browser-sync'),
-    css = fs.readFileSync("src/style.css", "utf8"),
-    reload = browserSync.reload;
+    runSequence = require('run-sequence');;
 
 gulp.task('css', function() {
     var processors = [
         cssnext,
         precss
     ];
+    var configNano = {
+      autoprefixer: { browsers: 'last 2 versions' },
+      discardComments: { removeAll: true },
+      safe: true
+    };
     return gulp.src('./src/*.css')
         .pipe(postcss(processors))
         .pipe(gulp.dest('./dest'))
         .pipe(plumber())
-        .pipe(nano({ discardComments: { removeAll: true } }))
-        .pipe(gulp.dest('./css/'))
-        .pipe(notify({ message: 'Your CSS is ready ;)' }))
+        .pipe(nano(configNano))
+        .pipe(gulp.dest('./app/css'))
+        .pipe( browserSync.stream() )
+        .pipe(notify({ message: 'Your CSS is ready ;)' }));
 });
 
 // Static server
 gulp.task('browser-sync', function() {
     browserSync({
         server: {
-            baseDir: "./"
+            baseDir: './app/'
         }
     });
 });
@@ -36,6 +40,11 @@ gulp.task('browser-sync', function() {
 // Watch
 gulp.task('watch', function() {
     // Watch .css files
-    gulp.watch('src/**/*.css', ['css', browserSync.reload]);
+    gulp.watch('src/**/*.css', ['css']);
 
+});
+
+// Default
+gulp.task('default', function() {
+  runSequence(['css', 'browser-sync', 'watch']);
 });
