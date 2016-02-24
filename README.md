@@ -2,6 +2,6 @@
 ## A gulpfile to take the plunge from Sass to PostCSS
 
 Is it possible to work without Sass and not to miss anything?
-Is it stable to work with postCSS in a production enviroment?
+Is it stable to work with postCSS in a production environment?
 
 I'm trying to prove it.
